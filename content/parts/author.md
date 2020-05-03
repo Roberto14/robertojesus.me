@@ -2,4 +2,5 @@
 title: author
 ---
 
-**Mr. Gatsby** Proin ornare ligula eu tellus tempus elementum. Aenean [bibendum](/) iaculis mi, nec blandit lacus interdum vitae. Vestibulum non nibh risus, a scelerisque purus. :hearts:
+Hello! I am **BobbyJ** and I am a web developer. I hope that you enjoyed my article! Please share and don't forget to discuss bellow or on twitter.
+Many Thanks!

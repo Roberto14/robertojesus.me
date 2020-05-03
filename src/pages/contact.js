@@ -7,10 +7,23 @@ import Main from "../components/Main";
 import Article from "../components/Main/Article";
 import PageHeader from "../components/Page/PageHeader";
 import Content from "../components/Main/Content";
-import Form from "../components/ContactForm";
 import config from "../../content/meta/config";
 
 const styles = theme => ({});
+
+const SocialLink = ({ url, name }) => (
+  <a href={url} key={name} target="_blank" rel="noopener noreferrer" title={name}>
+    {name}
+  </a>
+);
+
+SocialLink.propTypes = {
+  url: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired
+};
+
+const twitter = config.authorSocialLinks.find(item => item.name == "twitter")
+const linkedin = config.authorSocialLinks.find(item => item.name == "linkedin")
 
 const Contact = () => {
   return (
@@ -18,10 +31,9 @@ const Contact = () => {
       <Article>
         <PageHeader title="Contact" />
         <Content>
-          Feel free to contact me by email: <Obfuscate email={config.contactEmail} /> or use the
-          form below.
+          Feel free to contact me through social media <SocialLink {...twitter} />
+          , <SocialLink {...linkedin} /> or by email: <Obfuscate email={config.contactEmail} />
         </Content>
-        <Form />
       </Article>
     </Main>
   );

@@ -7,7 +7,6 @@
   "license": "MIT",
   "scripts": {
     "develop": "gatsby develop",
-    "develop-host": "gatsby develop --host 192.168.0.112",
     "build": "gatsby build",
     "serve": "gatsby serve",
     "format-output": "prettier src/**/*.{js,jsx}",
@@ -67,6 +66,7 @@
     "instantsearch.css": "^7.1.0",
     "prismjs": "^1.15.0",
     "react-custom-scrollbars": "^4.2.1",
+    "react-disqus-comments": "^1.4.0",
     "react-facebook": "^5.0.3",
     "react-headroom": "^2.2.2",
     "react-helmet": "^5.1.3",

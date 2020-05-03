@@ -69,7 +69,6 @@ const theme = createMuiTheme({
       blockquoteFrame: colors.lightGray,
       link: colors.accent,
       linkHover: colors.dark,
-      fbCommentsColorscheme: "light"
     },
     sizes: {
       articleMaxWidth: "50em"

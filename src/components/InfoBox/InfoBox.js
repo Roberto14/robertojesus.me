@@ -2,7 +2,6 @@ import React from "react";
 import PropTypes from "prop-types";
 import injectSheet from "react-jss";
 import { connect } from "react-redux";
-require("core-js/fn/array/find");
 
 import SocialIcons from "./SocialIcons";
 import InfoMenu from "./InfoMenu";
@@ -102,7 +101,7 @@ InfoBox.propTypes = {
   setNavigatorShape: PropTypes.func.isRequired
 };
 
-const mapStateToProps = (state, ownProps) => {
+const mapStateToProps = state => {
   return {
     navigatorPosition: state.navigatorPosition,
     navigatorShape: state.navigatorShape,

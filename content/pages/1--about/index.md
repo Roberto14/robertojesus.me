@@ -2,36 +2,34 @@
 title: About
 ---
 
-This is a demo site of the [PersonalBlog](https://github.com/greglobinski/gatsby-starter-personal-blog) GatsbyJS starter.
+I am a Software Engineer focused on **web development**, code maintenance and **DevOps** culture.
+I did my education on Informatics Engineering which is some sort of Computer Science in Madeira's University.
 
-The starter is a ready to use, easy to customize 'like theme' starter. It has everything what blog should have and some more.
+I've been exploring the web since the beginning. My first application was in fact a website back in 2005.
+Later in my master thesis I explored the world of **web advertising** and monetising web platforms.
 
-### Standard features:
+Right after I finished university I tried to build a business with other 2 colleagues after winning an entrepreneurship
+challenge. The product didn't succeed after 1 year and half of development. We built a mobile **webapp** backed with a
+resilient **NodeJS** API.
 
-* Easy editable content in **Markdown** files (posts, pages and parts)
-* **SEO** (sitemap generation, robot.txt, meta and OpenGraph Tags)
-* **Social** sharing (Twitter, Facebook, Google, LinkedIn)
-* **Comments** (Facebook)
-* **Images** lazy loading and `webp` support (gatsby-image)
-* Post **categories** (post list filtering)
-* Full text **searching** (Algolia)
-* **Contact** form (Netlify form handling)
-* **RSS** feed
-* **PWA** (manifest.json, offline support, favicons)
-* Google **Analytics**
-* **Favicons** generator (node script)
-* **Material UI** (@next)
+Since then I've worked with Roku channels (applications) using BrightScript, more NodeJS APIs and ReactJS frontend applications.
 
-### Advanced features:
+### Experienced with:
 
-* Easy customizable base **styles** via `theme` object (fonts, colors, sizes)
-* **Components** lazy loading (social sharing, comments)
-* **ESLint** (google config)
-* **Prettier** code styling
-* Custom webpack `CommonsChunkPlugin` settings
-* Webpack `BundleAnalyzerPlugin`
-* Contact **form validation** (react-material-ui-form-validator)
+* **Javascript** environment (ECMAScript standards)
+* **NodeJS** applications and SSR (Server side rendering)
+* **ReactJS** for frontend applications
+* **CI/CD** pipelines and 1-click deployment
+* NoSQL databases like **MongoDB**
+* **UX** thinking to get the best user journey
+* *Functional Programming* with Javascript
+* Agile Methods and **Scrum**
 
-## Instructions
+## Other than work
 
-For detailed instructions go to [Front-end web development with Greg](https://dev.greglobinski.com/gatsby-starter-personal-blog/).
+When going home after work I like to do **sports** like playing football, squash or going to the gym.
+
+Going out with friends for dinner or just a **beer** is very important to me to keep my balance and relax.
+
+And last but not least, I enjoy **travelling** as well! Who doesn't? To meet new people, cultures and languages are definitely one
+of my favourites hobbies.

@@ -1,32 +1,33 @@
 const colors = require("../../src/styles/colors");
 
 module.exports = {
-  siteTitle: "PersonalBlog - a blog starter for GatsbyJS", // <title>
-  shortSiteTitle: "PersonalBlog GatsbyJS Starter", // <title> ending for posts and pages
-  siteDescription: "PersonalBlog is a GatsbyJS starter.",
-  siteUrl: "https://gatsby-starter-personal-blog.greglobinski.com",
+  siteTitle: "Bobby's corner is a personal software engineering blog", // <title>
+  shortSiteTitle: "Bobby's corner", // <title> ending for posts and pages
+  siteDescription: "Bobby's corner is all about software engineering with focus on web development and javascript nodejs environment",
+  siteUrl: "https://robertojesus.me",
   pathPrefix: "",
   siteImage: "preview.jpg",
   siteLanguage: "en",
   // author
-  authorName: "greg lobinski",
-  authorTwitterAccount: "greglobinski",
+  authorName: "Roberto Jesus",
+  authorTwitterAccount: "RobertoRJ",
   // info
-  infoTitle: "greg lobinski",
-  infoTitleNote: "personal blog",
+  infoTitle: "bobby's corner",
+  infoTitleNote: "randomly writing",
   // manifest.json
-  manifestName: "PersonalBlog - a blog starter for GatsbyJS",
-  manifestShortName: "PersonalBlog", // max 12 characters
+  manifestName: "Bobby's corner is a personal software engineering blog",
+  manifestShortName: "BobbysCorner", // max 12 characters
   manifestStartUrl: "/",
   manifestBackgroundColor: colors.background,
   manifestThemeColor: colors.background,
   manifestDisplay: "standalone",
   // contact
-  contactEmail: "john@doe.com",
+  contactEmail: "bobby@robertojesus.me",
   // social
   authorSocialLinks: [
-    { name: "github", url: "https://github.com/greglobinski" },
-    { name: "twitter", url: "https://twitter.com/greglobinski" },
-    { name: "facebook", url: "https://facebook.com/greglobinski" }
-  ]
+    { name: "github", url: "https://github.com/Roberto14" },
+    { name: "twitter", url: "https://twitter.com/RobertoRJ" },
+    { name: "linkedin", url: "https://www.linkedin.com/in/roberto-jesus-03a65642/" }
+  ],
+  disqusShortname: "randomly-writing"
 };

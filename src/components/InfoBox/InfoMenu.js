@@ -26,9 +26,11 @@ const styles = theme => ({
 const InfoMenu = props => {
   const { classes, pages, linkOnClick } = props;
 
+  // pages.unshift({ node: })
+
   return (
     <nav className={classes.infoMenu}>
-      {pages.map((page, i) => {
+      {pages.map(page => {
         const { fields, frontmatter } = page.node;
         return (
           <Link
