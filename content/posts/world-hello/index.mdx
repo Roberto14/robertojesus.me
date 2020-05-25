@@ -1,0 +1,97 @@
+---
+title: "Hey World, hello!"
+date: 2020-05-18
+slug: "/world-hello"
+tags:
+    - programming languages
+    - world hello
+---
+
+This is `Hey World, hello!` in all languages I can remember to have built working software, either for production,
+prototyping or academic projects.
+
+### Javascript
+Starting with Javascript (and its relatives), the one I've spent about 6 years of my live working with and I still got mixed
+feelings as the language it self is far far from perfect but it's improving quite well since ES6 release:
+```javascript noLineNumbers
+console.log('Hey World, hello!')
+```
+
+### PHP
+The first language I used for dynamic web pages, it was on version PHP4 back then. Later I've used it for production level
+applications using Yii and CodeIgniter MVC frameworks.
+```noLineNumbers
+<?php echo "Hey World, hello!"; ?>
+```
+
+### Bash
+UNIX shell script is such a powerful tool, invest time improving bash skills, it will worth it.
+```bash noLineNumbers
+#!/bin/bash
+echo "Hey World, hello!"
+```
+
+### Lua
+Means *Moon* in Portuguese. A powerful, lightweight scripting language widelly used in gaming platforms. Ive used to develop an mobile game using
+Corona SDK (2D game engine):
+```noLineNumbers
+print("Hey World, hello!")
+```
+
+### BrightScript
+Proprietary scripting language to build *channels* for Roku TV streaming platforms. You need to build nearly everything
+from scratch as community (and open-source libs) basically don't exit.
+```
+? "Hey World, hello!"
+```
+
+### C
+I used **C** in academic projects for example to build a simple chat with Socket-based IPC (InterProcess Communication)
+```noLineNumbers
+printf("Hey %s, %s!", "World", "hello");
+```
+
+### Java
+Everybody knows a little bit of JAVA, right? I'm more into functional programming although well designed OOP application
+making use of design patterns and good practises has its place in my heart.
+```java noLineNumbers
+System.out.println("Hey World, hello!");
+```
+
+### C#
+Only used in academic projects, what I've said in Java fist here as well. Note in OOP, this line goes in a class method:
+```noLineNumbers
+Console.WriteLine("Hey World, hello!");
+```
+
+### Assembly (8051 Architecture)
+This is the funny on.. During my academic path I had to code running programs for AT80S51 microcontroller, you need to be
+careful or you might mistake a `R0` by `RO` as I did (and took me nearly 3 days to figure it out). Obviously
+I can't code it anymore but here is an example I took from [here](http://www.8051projects.info/lcd3.php):
+```
+LCALL INIT_LCD
+LCALL CLEAR_LCD
+MOV A,#'H'
+LCALL WRITE_TEXT
+MOV A,#'E'
+LCALL WRITE_TEXT
+MOV A,#'Y'
+LCALL WRITE_TEXT
+...
+```
+
+### Wolfram Mathematica
+Similar to MatLab, this software is very powerful when it comes to applied science and mathematics. I've used it obviously
+in academic environment.
+```noLineNumbers
+Print["Hey World, hello!"]
+```
+
+### VisualBasic
+This is a classic! Used to play with it when in high school to build simple UI apps and impress my friends :D
+```noLineNumbers
+MsgBox "Hey World, hello!"
+```
+
+I've played with other languages like **Go**, **Dart** and **Rust** but never built something cool with it.
+

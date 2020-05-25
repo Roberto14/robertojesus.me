@@ -1,9 +1,9 @@
 {
   "private": true,
-  "name": "minimal-blog",
-  "description": "Typography driven, feature-rich blogging theme with minimal aesthetics. Includes tags/categories support and extensive features for code blocks such as live preview, line numbers, and line highlighting.",
-  "version": "1.1.5",
-  "author": "LekoArts <hello@lekoarts.de>",
+  "name": "robertojesus.me",
+  "description": "Personal website and blog",
+  "version": "1.0.0",
+  "author": "Roberto <entrypoint@robertojesus.me>",
   "license": "MIT",
   "starter-name": "gatsby-starter-minimal-blog",
   "scripts": {
@@ -11,11 +11,13 @@
     "develop": "gatsby develop",
     "develop:cypress": "cross-env CYPRESS_SUPPORT=y yarn develop",
     "build:cypress": "cross-env CYPRESS_SUPPORT=y yarn build",
-    "start": "gatsby develop",
     "serve": "gatsby serve",
     "clean": "gatsby clean"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.28",
+    "@fortawesome/free-brands-svg-icons": "^5.13.0",
+    "@fortawesome/react-fontawesome": "^0.1.9",
     "@lekoarts/gatsby-theme-minimal-blog": "^2.3.5",
     "gatsby": "^2.20.36",
     "gatsby-plugin-google-analytics": "^2.1.4",
@@ -24,7 +26,9 @@
     "gatsby-plugin-offline": "^2.2.4",
     "gatsby-plugin-sitemap": "^2.2.19",
     "react": "^16.13.1",
-    "react-dom": "^16.13.1"
+    "react-disqus-comments": "^1.4.0",
+    "react-dom": "^16.13.1",
+    "react-obfuscate": "^3.6.6"
   },
   "devDependencies": {
     "cross-env": "^5.2.0"
