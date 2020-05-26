@@ -14,10 +14,10 @@ const HeaderExternalLinks = () => {
   return (
     <React.Fragment>
       {externalLinks && externalLinks.length > 0 && (
-        <div sx={{ "a:not(:first-of-type)": { ml: 3 }, fontSize: [1, `18px`] }}>
+        <div sx={{ "a:not(:first-of-type)": { ml: 3 }, fontSize: [1, `24px`] }}>
           {externalLinks.map((link) => (
             <TLink key={link.url} href={link.url}>
-              <FontAwesomeIcon icon={['fab', link.name]} size="lg" />
+              <FontAwesomeIcon icon={['fab', link.name]} />
             </TLink>
           ))}
         </div>
