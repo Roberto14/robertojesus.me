@@ -8,7 +8,9 @@ module.exports = {
   siteMetadata: {
     siteTitle: ``,
     siteTitleAlt: `Roberto's Corner`,
+    siteHeadline: `Minimal Blog for software developers by @RobertoRJ`,
     siteDescription,
+    siteUrl: `https://robertojesus.me/`,
     siteLanguage: `en`,
     author: `@RobertoRJ`,
   },
