@@ -8,6 +8,7 @@ import Layout from "@lekoarts/gatsby-theme-minimal-blog/src/components/layout"
 import ItemTags from "@lekoarts/gatsby-theme-minimal-blog/src/components/item-tags"
 import SEO from "@lekoarts/gatsby-theme-minimal-blog/src/components/seo"
 import Biography from "./bio"
+import EditOnGitHub from "./editOnGitHub";
 
 type PostProps = {
   data: {
@@ -59,6 +60,7 @@ const Post = ({ data: { post } }: PostProps) => (
     </p>
     <section sx={{ my: 5, ".gatsby-resp-image-wrapper": { my: [4, 4, 5], boxShadow: shadow.join(`, `) } }}>
       <MDXRenderer>{post.body}</MDXRenderer>
+      <EditOnGitHub contentPath={`posts${post.slug}/index.mdx`} />
       <Biography />
       <ReactDisqusComments
           shortname='robertos-corner'
