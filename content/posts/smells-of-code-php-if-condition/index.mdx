@@ -1,0 +1,41 @@
+---
+title: Smells Of Code Series - PHP If condition
+slug: "/smells-of-code-php-if-condition"
+date: 2020-06-27
+tags:
+    - smells of code
+---
+import SequenceNavigation from '../../../src/components/SequenceNavigation'
+import sequence from '../smells-of-code/sequence'
+
+<p>
+This my first code smell, a basic one. A friend asks me to have a look and integrate a 3rd-party service on his
+PHP website. He initially hired a freelance developer through a freelance platform to build his website but we all know
+the costs of maintenance. I found some good things like well design SQL queries but the website architecture was very bad.
+This code block was funny though 😄
+</p>
+
+```
+if (strpos($key, "contact-form-") === false) {
+}
+else {
+  ...
+}
+```
+
+<p>I think you should switch the if condition..</p>
+
+```
+if (strpos($key, "contact-form-")) {
+   ...
+}
+```
+
+<SequenceNavigation sequence={sequence} slug='/smells-of-code-php-if-condition' />
+
+
+
+
+
+
+

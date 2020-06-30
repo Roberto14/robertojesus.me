@@ -1,4 +1,5 @@
 /** @jsx jsx */
+// @ts-ignore
 import React from "react"
 import { Link, jsx } from "theme-ui"
 
