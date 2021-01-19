@@ -23,10 +23,10 @@ else {
 }
 ```
 
-<p>I think you should switch the if condition..</p>
+<p>For readability I think you should switch the if condition..</p>
 
 ```
-if (strpos($key, "contact-form-")) {
+if (strpos($key, "contact-form-") !== false) {
    ...
 }
 ```
