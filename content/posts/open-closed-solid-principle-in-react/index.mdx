@@ -1,0 +1,86 @@
+---
+title: "Open-closed SOLID principal in React"
+date: 2021-08-26
+slug: "/open-closed-solid-principle-in-react"
+tags:
+    - react
+    - open-closed principal
+    - composition
+    - inheritance
+---
+
+Recently I read a very good article¹ published by a co-worker which demonstrate how to apply
+SOLID principles on react applications.
+In the article, the Open-closed principle is demonstrated using composition which I believe
+to be the *de facto*, and the best method to extend React components, although the principal
+usually refers to classical inheritance².
+
+So I decided to write this article to exemplify how to apply the Open-closed principal
+using both **inheritance** and **composition**.
+
+As a naive example let's create a simple `Button` component that gets a single prop `name`.
+A new component, `SmileyButton` should extend the previous and get a new prop `smiley`.
+This prop will be concatenated to the button's name.
+
+If to be compliant with the Open-closed principal, it required to use class-based inheritance,
+this is how we could design our example:
+
+```javascript
+class Button extends React.Component {
+  getButtonText() {
+    return this.props.name;
+  }
+
+  render() {
+    return <button>{this.getButtonText()}</button>;
+  }
+}
+
+// Note that SmileyButton extends Button instead of React.Component
+class SmileyButton extends Button {
+  getButtonText() {
+    const text = super.getButtonText();
+    const smiley = this.props.smiley || "";
+    return `${text} ${smiley}`;
+  }
+}
+```
+The principal is properly applied as we didn't modify the original `Button` component and still
+added a custom behaviour!
+
+What about using **composition**? Composition is about _what it does_ over _what it is_ as in inheritance.
+Saying that, let's create functional components and compose them to achieve the same result as before:
+
+```javascript
+const Button = ({ name }) => <button>{name}</button>
+
+const SmileyButton = ({ name, smiley = "" }) => {
+  const happyName = `${name} ${smiley}`;
+  return <Button name={happyName} />;
+};
+```
+
+We achieved the same result as the previous example! We just composed the `Button`
+component with the custom behaviour that we need! In my opinion, composition is
+more flexible, clean and future proof than inheritance, and joining it with react functional
+components... Damn, it's beautiful!
+
+Note **composition** is not exclusive of Functional Programing paradigm,
+it's often recommended using it over inheritance in Object-Oriented Programming.
+
+Here is a sandbox with working samples for both examples provided above:
+<iframe src="https://codesandbox.io/embed/amazing-sara-vtoqm?fontsize=14&hidenavigation=1&theme=dark"
+        style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
+        title="amazing-sara-vtoqm"
+        allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
+        sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
+></iframe>
+
+Wrapping up, the composition is the way to go when extending functionality of
+React components, and guess what, High Order Components (HOCs) are a perfect example of
+composition. Other than that, remember that React class components are deprecated
+and will fade away soon! Leave a comment bellow and share your feedback!
+
+##### References:
+1. [Applying SOLID To React](https://medium.com/docler-engineering/applying-solid-to-react-ca6d1ff926a4)
+2. [Open-closed principal](https://en.wikipedia.org/wiki/Open%E2%80%93closed_principle)
