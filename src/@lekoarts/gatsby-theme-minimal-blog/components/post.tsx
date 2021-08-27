@@ -59,6 +59,12 @@ const Post = ({ data: { post } }: PostProps) => (
       {post.timeToRead && <span>{post.timeToRead} min read</span>}
     </p>
     <section sx={{ my: 5, ".gatsby-resp-image-wrapper": { my: [4, 4, 5], boxShadow: shadow.join(`, `) } }}>
+      {post.banner && (
+          <img
+            src={post.banner.childImageSharp.resize.src}
+            alt={post.description || post.excerpt}
+        />
+      )}
       <MDXRenderer>{post.body}</MDXRenderer>
       <EditOnGitHub contentPath={`posts${post.slug}/index.mdx`} />
       <Biography />
