@@ -9,6 +9,12 @@ tags:
     - inheritance
 ---
 
+<img
+    src="https://cdn.shopify.com/s/files/1/0314/5400/3339/products/OC13A_a_2048x.jpg?v=1583060313"
+    alt="Open closed principal"
+    width="800"
+/>
+
 Recently I read a very good article¹ published by a co-worker which demonstrate how to apply
 SOLID principles on react applications.
 In the article, the Open-closed principle is demonstrated using composition which I believe
@@ -44,6 +50,9 @@ class SmileyButton extends Button {
     return `${text} ${smiley}`;
   }
 }
+
+// Client code
+const HappyButton = <SmileyButton name="Happy Button" smiley=":D" />
 ```
 The principal is properly applied as we didn't modify the original `Button` component and still
 added a custom behaviour!
@@ -58,6 +67,9 @@ const SmileyButton = ({ name, smiley = "" }) => {
   const happyName = `${name} ${smiley}`;
   return <Button name={happyName} />;
 };
+
+// Client code
+const HappyButton = <SmileyButton name="Happy Button" smiley=":D" />
 ```
 
 We achieved the same result as the previous example! We just composed the `Button`
@@ -68,7 +80,22 @@ components... Damn, it's beautiful!
 Note **composition** is not exclusive of Functional Programing paradigm,
 it's often recommended using it over inheritance in Object-Oriented Programming.
 
-Here is a sandbox with working samples for both examples provided above:
+We aren't finished yet! There is another way of extending a component behaviour by
+taking a _functional_ approach again. This time original `Button` will provide an API that
+lets us change its own behaviour:
+
+```javascript
+const Button = ({ getButtonText = () => "" }) =>
+    <button>{getButtonText()}</button>
+
+// Client code
+const HappyButton = <Button getButtonText={() => "Happy Button :D"} />
+```
+
+In this last example, we don't need to compose the button component as the client
+will provide the behaviour right away.
+
+Here is a sandbox with working samples for all examples provided above:
 <iframe src="https://codesandbox.io/embed/amazing-sara-vtoqm?fontsize=14&hidenavigation=1&theme=dark"
         style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
         title="amazing-sara-vtoqm"
