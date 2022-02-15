@@ -63,7 +63,7 @@ const Post = ({ data: { post } }: PostProps) => (
           <img
             src={post.banner.childImageSharp.resize.src}
             alt={post.description || post.excerpt}
-            width="960"
+            sx={{ width: "100%", maxWidth: "960px"}}
         />
       )}
       <MDXRenderer>{post.body}</MDXRenderer>
