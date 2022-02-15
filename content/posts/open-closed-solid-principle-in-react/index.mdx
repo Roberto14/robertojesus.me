@@ -1,12 +1,12 @@
 ---
-title: "Open-closed SOLID principal in React"
+title: "Open-closed SOLID principle in React"
 date: 2021-08-26
 slug: "/open-closed-solid-principle-in-react"
 banner: ./open_closed_principal.jpg
-description: Open-closed principal is fundamental in extending software entities and React components are no different, check out how to do it!
+description: Open-closed principle is fundamental in extending software entities and React components are no different, check out how to do it!
 tags:
     - react
-    - open-closed principal
+    - open-closed principle
     - composition
     - inheritance
 ---
@@ -14,17 +14,17 @@ tags:
 Recently I read a very good article¹ published by a co-worker which demonstrate how to apply
 SOLID principles on react applications.
 In the article, the Open-closed principle is demonstrated using composition which I believe
-to be the *de facto*, and the best method to extend React components, although the principal
+to be the *de facto*, and the best method to extend React components, although the principle
 usually refers to classical inheritance².
 
-So I decided to write this article to exemplify how to apply the Open-closed principal
+So I decided to write this article to exemplify how to apply the Open-closed principle
 using both **inheritance** and **composition**.
 
 As a naive example let's create a simple `Button` component that gets a single prop `name`.
 A new component, `SmileyButton` should extend the previous and get a new prop `smiley`.
 This prop will be concatenated to the button's name.
 
-If to be compliant with the Open-closed principal, it required to use class-based inheritance,
+If to be compliant with the Open-closed principle, it required to use class-based inheritance,
 this is how we could design our example:
 
 ```javascript
@@ -50,7 +50,7 @@ class SmileyButton extends Button {
 // Client code
 const HappyButton = <SmileyButton name="Happy Button" smiley=":D" />
 ```
-The principal is properly applied as we didn't modify the original `Button` component and still
+The principle is properly applied as we didn't modify the original `Button` component and still
 added a custom behaviour!
 
 What about using **composition**? Composition is about _what it does_ over _what it is_ as in inheritance.
@@ -106,4 +106,4 @@ and will fade away soon! Leave a comment bellow and share your feedback!
 
 ##### References:
 1. [Applying SOLID To React](https://medium.com/docler-engineering/applying-solid-to-react-ca6d1ff926a4)
-2. [Open-closed principal](https://en.wikipedia.org/wiki/Open%E2%80%93closed_principle)
+2. [Open-closed principle](https://en.wikipedia.org/wiki/Open%E2%80%93closed_principle)
