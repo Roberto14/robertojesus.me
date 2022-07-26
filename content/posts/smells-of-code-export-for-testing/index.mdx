@@ -1,0 +1,95 @@
+---
+title: Export a function for unit testing
+slug: "/smells-of-code-export-for-testing"
+date: 2022-03-22
+tags:
+    - smells of code
+    - javascript
+    - unit testing
+    - software engineering
+---
+import SequenceNavigation from '../../../src/components/SequenceNavigation'
+import sequence from '../smells-of-code/sequence'
+
+On the Series of Smells of Code, I bring you a topic which is many times
+unnoticed or neglected by developers in a daily basis, and I truly believe
+most of us have done or still do this **pattern** on daily work.
+
+The **pattern** I'm referring to is just the export of a function for unit testing
+purposes. Usually if you export a function from your module api just for testing,
+something is already wrong and eventually smelling.
+
+### Why is it wrong?
+Ideally your module (component, unit, file, ...) will export
+a set of functions or methods that represent its signature or public API. The first problem
+occurs right here, when exporting a private member of the module to be easily unit tested
+, you are turning this private method into a public one right away. This method can then be used
+by the client in ways you haven't thought of. It clearly rises
+security concerns and your module will be more prone to errors regardless of
+this former private method being unit tested.
+
+//todo set right pattern references
+
+### What alternatives do I have?
+First and from now on, I'm going to call this practise an anti-pattern since it violates
+the rules of patterns (//todo: set rigth pattern).
+There is also no silver bullet or a single **pattern** or way to fix this **anti-pattern**.
+Each use case is unique and has its owns business requirements and complexity. Nevetheless,
+the aim for refactoring should be focused on Single Responsibility Principle (SRT) and
+//todo: patterns set before
+
+<blockquote sx={{ fontSize: "1.5em" }}>
+All units of a modular system must do a single job only, and do it right!
+</blockquote>
+
+### How do I refactor the anti-pattern?
+As rule of thumb, when I face such need of exporting a private function just to
+make my life easier on testing it, I ask myself the following questions:
+
+##### 1. Can I cover my private function only consuming my public api?
+Assuming it belongs to this module, providing distinct inputs to my module's public api?
+
+##### 2. Does this function really belongs to this module?
+If I can't cover the private function, Should it belong to somewhere
+else or even become a module itself (on more complex use cases)?
+I can be the client of this module.
+
+##### 3. Can this function be public?
+Does it provide useful functionality and is it safe to be public?
+
+##### 4. Should I consider to use rewire technique?
+Using rewire technique if I still need to export a private function or just go back and start from 1.
+
+I hope my mental model to get rid of this anti-pattern helps you too. Please tweet
+me and share your feedback so that we can learn together.
+
+```
+if (strpos($key, "contact-form-") === false) {
+}
+else {
+  ...
+}
+```
+
+<p>For readability I think you should switch the if condition..</p>
+
+```
+if (strpos($key, "contact-form-") !== false) {
+   ...
+}
+```
+
+
+##### References:
+1. [Applying SOLID To React](https://medium.com/docler-engineering/applying-solid-to-react-ca6d1ff926a4)
+2. [Open-closed principle](https://en.wikipedia.org/wiki/Open%E2%80%93closed_principle)
+
+
+<SequenceNavigation sequence={sequence} slug='/smells-of-code-php-if-condition' />
+
+
+
+
+
+
+
