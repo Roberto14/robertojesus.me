@@ -1,7 +1,7 @@
 /** @jsx jsx */
 // @ts-ignore
 import React from "react"
-import { Link, jsx } from "theme-ui"
+import { jsx } from "theme-ui"
 
 type ProgressionBarType = {
     text: string,
@@ -9,7 +9,6 @@ type ProgressionBarType = {
 }
 
 const ProgressionBar = ({ text, percentage }: ProgressionBarType) => {
-
     const progressStyles = {
         float: 'left',
         width: `${percentage}%`,
@@ -33,7 +32,6 @@ const ProgressionBar = ({ text, percentage }: ProgressionBarType) => {
         borderRadius: '4px',
         boxShadow: 'inset 0 1px 2px rgba(0,0,0,.1)',
     }
-
 
     return (
         <div sx={wrapperStyles}>

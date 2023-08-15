@@ -11,11 +11,11 @@ const Biography = () => {
     const { author } = useSiteMetadata()
 
     return (
-        <Flex my={5} sx={{ flexDirection: [`column`, `column`, `row`]}}>
+        <Flex sx={{ flexDirection: [`column`, `column`, `row`]}}>
             <Box mx={['auto', 'auto', 0]} my={'auto'}>
-                <Image src={profilePic} alt={`author ${author}`} variant='avatar' />
+                <Image src={profilePic} alt={`author ${author}`} sx={{ width: [180, 180, 120]}} />
             </Box>
-            <Box pl={[null, null, 16]} pt={2} >
+            <Box pl={[null, null, 16]}>
                 <Bio author={author} />
             </Box>
         </Flex>

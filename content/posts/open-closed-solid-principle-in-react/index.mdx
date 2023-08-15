@@ -27,7 +27,7 @@ This prop will be concatenated to the button's name.
 If to be compliant with the Open-closed principle, it required to use class-based inheritance,
 this is how we could design our example:
 
-```javascript
+```js
 class Button extends React.Component {
   getButtonText() {
     return this.props.name;
@@ -56,7 +56,7 @@ added a custom behaviour!
 What about using **composition**? Composition is about _what it does_ over _what it is_ as in inheritance.
 Saying that, let's create functional components and compose them to achieve the same result as before:
 
-```javascript
+```js
 const Button = ({ name }) => <button>{name}</button>
 
 const SmileyButton = ({ name, smiley = "" }) => {
@@ -80,7 +80,7 @@ We aren't finished yet! There is another way of extending a component behaviour 
 taking a _functional_ approach again. This time original `Button` will provide an API that
 lets us change its own behaviour:
 
-```javascript
+```js
 const Button = ({ getButtonText = () => "" }) =>
     <button>{getButtonText()}</button>
 
@@ -93,7 +93,7 @@ will provide the behaviour right away.
 
 Here is a sandbox with working samples for all examples provided above:
 <iframe src="https://codesandbox.io/embed/amazing-sara-vtoqm?fontsize=14&hidenavigation=1&theme=dark"
-        style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
+        style={{ width: '100%', height: '500px', border: 0, borderRadius: '4px', overflow: 'hidden'}}
         title="amazing-sara-vtoqm"
         allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
         sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
