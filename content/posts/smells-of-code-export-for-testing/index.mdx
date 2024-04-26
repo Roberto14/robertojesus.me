@@ -1,7 +1,7 @@
 ---
 title: Export a function for unit testing
 slug: "/smells-of-code-export-for-testing"
-date: 2022-03-22
+date: 2024-05-27
 tags:
     - smells of code
     - javascript
@@ -26,56 +26,63 @@ occurs right here, when exporting a private member of the module to be easier to
 you are turning this private member into a public one right away.
 This member can then be used by the client in ways you haven't thought of!
 It clearly rises red flags as both your client code and module will be more prone to errors and security flaws.
-As an overall, the cons will overweight the pros of exporting something private just to unit testing purposes.
-
-//todo set right pattern references
+As an overall, the cons will overweight the pros of exporting something private just for unit testing purposes.
 
 ### What alternatives do I have?
-First and from now on, I'm going to call this practise an anti-pattern since it violates
-the rules of patterns (//todo: set rigth pattern).
-There is also no silver bullet or a single **pattern** or way to fix this **anti-pattern**.
+There is also no silver bullet or a single **pattern** or way to fix this problem.
 Each use case is unique and has its owns business requirements and complexity. Nevertheless,
-the aim for refactoring should be focused on Single Responsibility Principle (SRT) and
-//todo: patterns set before
-
+the aim for refactoring should be focused on Single Responsibility Principle (SRT) and Dependency Injection (DI).
+These patterns are known to improve the code testability and quality. //todo add reference
+//todo: add reference
 <blockquote sx={{ fontSize: "1.5em" }}>
 All units of a modular system must do a single job only, and do it right!
 </blockquote>
 
 ### How do I refactor the anti-pattern?
-As rule of thumb, when I face such need of exporting a private function just to
-make my life easier on testing it, I ask myself the following questions:
+As rule of thumb, when I face such need of exporting a private function just for testing,
+I ask myself the following questions:
 
 ##### 1. Can I cover a private function by consuming the public api?
 Providing distinct inputs to the module's public api can be enough to cover private/internal functions.
 
-##### 2. Does this function really belongs to this module?
-If I can't cover the private function, should it belong to somewhere else or even become a module itself?
-I can be the client of this module.
+##### 2. Should I refactor the code to make testing easier?
+If I can't fully cover the private function with the public API, it can be an indicator that something is *smelling*.
+I would spend some time to re-think the implementation and perhaps explore software patterns like
+Dependency Injection (DI). With DI, our code dependencies are really easy to test as you can inject spies directly into
+the implementation.
 
 ##### 3. Can a private function be refactored to be public?
-Does it provide useful functionality, or is it safe to be exported?
+If the refactor didn't help or wasn't possible, then we can check if this private function provides useful functionality
+and it is safe to be exported.
 
-##### 4. Should I consider to use rewire technique?
-Using rewire technique if I still need to export a private function or just go back and start from 1.
-Check internals in deno docs.
+##### 4. Does a private function really belongs to this module?
+If it is safe to be exported, perhaps it could belong to other module or even become a
+module itself. Then we can be the client of this module and import it as a dependency.
 
-### Examples of concerns
+##### 5. Should I consider to use "monkey-patching" technique?
+In Javascript ecosystem, we can use [rewire](https://www.npmjs.com/package/rewire) package to inspect private
+functions or variables, it will export private functions and let you spy or stub them.
+A similar technique is also present in **Deno** land for mocking purposes. Deno suggest to export an `_internals` object
+with private methods to let us *monkey-patch* and spy those internal functions.
 
-In the following example, a ES module purpose is to provide two members, to add and remove elements from breadcrumbs:
+### Example of concerns
+
+In the following example, a naive ES module purpose is to provide two members to append and remove elements of *breadcrumbs*:
 
 ```javascript
-const SEPARATOR = '>';
+const SEPARATOR = ' > ';
 let currentPath = '';
 
-const withSeparator = (path) => ` ${SEPARATOR} ${path}`;
-const setNewValue = (value) => `${currentPath}${value}`;
+const withSeparator = (element) => `${SEPARATOR}${element}`;
+const appendToCurrentPath = (value) => {
+    currentPath = `${currentPath}${value}`;
+}
 
-export const addElement = (newElement, separator = false) => {
+export const appendElement = (newElement, separator = false) => {
     if (separator) {
-        setNewValue(withSeparator(newElement))
+        appendToCurrentPath(withSeparator(newElement))
     } else {
-        setNewValue(newElement)
+        appendToCurrentPath(newElement)
     }
 }
 
@@ -83,29 +90,31 @@ export const addElement = (newElement, separator = false) => {
 export const removeLastElement = () => { /* implementation */}
 ```
 
-In this example, we don't want to export `withSeparator` as it's a module private member.
-The way we will test it is just by calling `addElement` with separator flag set as true.
+In this naive example, we don't want to export `withSeparator` as it's a module private member.
+The way we will test it is just by calling `appendElement` with separator flag set as true.
 The public member will cover the internal code needed.
 
-Although, there is no big risk in exporting the `withSeparator` as it is a pure function,
-if you export `setNewValue` then it's a whole new story. This one mutates data and if it's
-wrongly used by a client, it could break when calling another public function like the `removeElement`.
+Although, there is no big risk in exporting the `withSeparator` as it is a pure function that doesn't mutate state,
+if you export `appendToCurrentPath` then it's a different story altogether. This one mutates the state and if it's
+wrongly used by a client, it could break the module execution when calling public APIs like `removeLastElement`.
 
 ### Thoughts
 
 A good software design takes account the implementation of unit tests and make sure the code is
-easy to test. That doesn't mean to export private code, it means we export a good public api
-that it's easy to test.
+easy to test. That doesn't mean to export private code, it means we export a good public API that it's easy to test.
 
-Regardless of some techniques or technologies favor and accept exporting private members
-(sometimes called **internals**, see 4.), in my humble opinion, it brings more risks than benefits specially for
-big codebases where the complexity is considerably bigger.
+Regardless of some techniques or technologies that favor and accept exporting private members
+(see Deno *_internals* or *rewire* bellow), in my humble opinion, it brings more risks than benefits specially for
+big codebases where the complexity is considerably higher.
 
 I hope this article helped you to understand the main issue and gave you hints on how to improve your code.
 Please tweet me and share your feedback so that we can learn together.
 
 ##### References:
 1. [Applying SOLID To React](https://medium.com/docler-engineering/applying-solid-to-react-ca6d1ff926a4)
+2. [Deno Mocking](https://docs.deno.com/runtime/manual/basics/testing/mocking)
+3. [Rewire](https://www.npmjs.com/package/rewire)
+
 
 <SequenceNavigation sequence={sequence} slug='/smells-of-code-php-if-condition' />
 
