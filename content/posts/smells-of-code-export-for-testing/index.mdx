@@ -1,23 +1,24 @@
 ---
-title: Export a function for unit testing
-slug: "/smells-of-code-export-for-testing"
+title: Exporting a function for Unit Testing purposes
+slug: "/smells-of-code-export-function-for-testing"
 date: 2024-05-27
 tags:
     - smells of code
     - javascript
     - unit testing
     - software engineering
+    - jest
 ---
 import SequenceNavigation from '../../../src/components/SequenceNavigation'
 import sequence from '../smells-of-code/sequence'
 
 On the Series of Smells of Code, I bring you a topic which is many times
 unnoticed or neglected by developers in a daily basis, and I truly believe
-most of us have done or still do this **pattern** on daily basis.
+most of us have done or still do this **practice** on daily basis.
 
-The **pattern** I'm referring to is the export for unit testing
-purposes. Usually if you export a function from your module just for testing,
-something is probably wrong and smelling.
+The **practice** I'm referring to it's the exports for unit testing
+purposes only. Usually if you export a function from your module just for testing,
+something may be smelling.
 
 ### Why is it wrong?
 Ideally, your module (eg. ES Modules) will export
@@ -29,41 +30,41 @@ It clearly rises red flags as both your client code and module will be more pron
 As an overall, the cons will overweight the pros of exporting something private just for unit testing purposes.
 
 ### What alternatives do I have?
-There is also no silver bullet or a single **pattern** or way to fix this problem.
+There is also no silver bullet or a specific **pattern** to fix this problem.
 Each use case is unique and has its owns business requirements and complexity. Nevertheless,
-the aim for refactoring should be focused on Single Responsibility Principle (SRT) and Dependency Injection (DI).
-These patterns are known to improve the code testability and quality. //todo add reference
-//todo: add reference
+the aim for refactoring should be focused on Single Responsibility Principle and Dependency Inversion.
+These principles are known to improve the code testability and quality.
+
 <blockquote sx={{ fontSize: "1.5em" }}>
 All units of a modular system must do a single job only, and do it right!
 </blockquote>
 
-### How do I refactor the anti-pattern?
+### How do I refactor my code?
 As rule of thumb, when I face such need of exporting a private function just for testing,
 I ask myself the following questions:
 
 ##### 1. Can I cover a private function by consuming the public api?
-Providing distinct inputs to the module's public api can be enough to cover private/internal functions.
+Providing distinct inputs to the module's public API must be enough to cover private/internal functions.
 
 ##### 2. Should I refactor the code to make testing easier?
 If I can't fully cover the private function with the public API, it can be an indicator that something is *smelling*.
 I would spend some time to re-think the implementation and perhaps explore software patterns like
-Dependency Injection (DI). With DI, our code dependencies are really easy to test as you can inject spies directly into
+[Dependency Injection][1]. With DI, our code dependencies are really easy to test as you can inject spies directly into
 the implementation.
 
 ##### 3. Can a private function be refactored to be public?
 If the refactor didn't help or wasn't possible, then we can check if this private function provides useful functionality
-and it is safe to be exported.
+and if it's safe to be exported.
 
 ##### 4. Does a private function really belongs to this module?
-If it is safe to be exported, perhaps it could belong to other module or even become a
+If it's safe to be exported, perhaps it could belong to another module, or even become a
 module itself. Then we can be the client of this module and import it as a dependency.
 
 ##### 5. Should I consider to use "monkey-patching" technique?
-In Javascript ecosystem, we can use [rewire](https://www.npmjs.com/package/rewire) package to inspect private
+In Javascript ecosystem, we can use [rewire][3] package to inspect private
 functions or variables, it will export private functions and let you spy or stub them.
 A similar technique is also present in **Deno** land for mocking purposes. Deno suggest to export an `_internals` object
-with private methods to let us *monkey-patch* and spy those internal functions.
+with private methods to let us **monkey-patch** and spy those internal functions.
 
 ### Example of concerns
 
@@ -90,8 +91,8 @@ export const appendElement = (newElement, separator = false) => {
 export const removeLastElement = () => { /* implementation */}
 ```
 
-In this naive example, we don't want to export `withSeparator` as it's a module private member.
-The way we will test it is just by calling `appendElement` with separator flag set as true.
+In this naive example, we don't want to export `withSeparator` as it is a module private member.
+The way we're going to test it, it's by just by calling `appendElement` with separator flag set to true.
 The public member will cover the internal code needed.
 
 Although, there is no big risk in exporting the `withSeparator` as it is a pure function that doesn't mutate state,
@@ -104,16 +105,19 @@ A good software design takes account the implementation of unit tests and make s
 easy to test. That doesn't mean to export private code, it means we export a good public API that it's easy to test.
 
 Regardless of some techniques or technologies that favor and accept exporting private members
-(see Deno *_internals* or *rewire* bellow), in my humble opinion, it brings more risks than benefits specially for
-big codebases where the complexity is considerably higher.
+(see Deno *_internals* or *rewire* above), imho, it brings more risks than benefits specially for
+a big codebase where the complexity is considerably higher.
 
 I hope this article helped you to understand the main issue and gave you hints on how to improve your code.
 Please tweet me and share your feedback so that we can learn together.
 
 ##### References:
-1. [Applying SOLID To React](https://medium.com/docler-engineering/applying-solid-to-react-ca6d1ff926a4)
+1. [Dependency Injection][1]
 2. [Deno Mocking](https://docs.deno.com/runtime/manual/basics/testing/mocking)
-3. [Rewire](https://www.npmjs.com/package/rewire)
+3. [Rewire][3]
+
+[1]: https://stackify.com/dependency-injection/
+[3]: https://www.npmjs.com/package/rewire
 
 
 <SequenceNavigation sequence={sequence} slug='/smells-of-code-php-if-condition' />
