@@ -1,22 +1,22 @@
 ---
 title: Exporting a function for Unit Testing purposes
-slug: "/smells-of-code-export-function-for-testing"
-date: 2024-05-27
+date: 2024-05-18
+slug: "/export-function-for-testing"
+banner: ./export.jpg
+description: "Exporting code for testing purposes is odd and should be avoided due to multiple reasons, check them out on this article"
 tags:
-    - smells of code
     - javascript
     - unit testing
     - software engineering
-    - jest
+    - rewire
+    - export
 ---
-import SequenceNavigation from '../../../src/components/SequenceNavigation'
-import sequence from '../smells-of-code/sequence'
 
-On the Series of Smells of Code, I bring you a topic which is many times
+Today, I bring you a topic which is many times
 unnoticed or neglected by developers in a daily basis, and I truly believe
 most of us have done or still do this **practice** on daily basis.
 
-The **practice** I'm referring to it's the exports for unit testing
+The **practice** I'm referring to it's exporting for unit testing
 purposes only. Usually if you export a function from your module just for testing,
 something may be smelling.
 
@@ -118,13 +118,3 @@ Please tweet me and share your feedback so that we can learn together.
 
 [1]: https://stackify.com/dependency-injection/
 [3]: https://www.npmjs.com/package/rewire
-
-
-<SequenceNavigation sequence={sequence} slug='/smells-of-code-php-if-condition' />
-
-
-
-
-
-
-
